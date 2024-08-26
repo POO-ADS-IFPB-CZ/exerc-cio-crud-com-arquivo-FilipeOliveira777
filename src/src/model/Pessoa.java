@@ -1,4 +1,5 @@
 package model;
+<<<<<<< HEAD
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,6 +14,16 @@ public class Pessoa implements Serializable {
         this.email = email;
     }
 
+=======
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.Objects;
+
+public class Pessoa implements Serializable {
+    private String nome;
+    private String email;
+
+>>>>>>> origin/main
     public String getNome() {
         return nome;
     }
@@ -29,6 +40,14 @@ public class Pessoa implements Serializable {
         this.email = email;
     }
 
+<<<<<<< HEAD
+=======
+    public Pessoa(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+
+>>>>>>> origin/main
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,15 +57,26 @@ public class Pessoa implements Serializable {
     }
 
     @Override
+<<<<<<< HEAD
     public int hashCode() {
         return Objects.hashCode(email);
     }
 
     @Override
+=======
+>>>>>>> origin/main
     public String toString() {
         return "Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(email);
+    }
+>>>>>>> origin/main
 }
