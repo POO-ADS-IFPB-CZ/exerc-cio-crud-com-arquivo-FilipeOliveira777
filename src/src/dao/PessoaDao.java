@@ -10,7 +10,6 @@ public class PessoaDao {
 
     private final File arquivo;
 
-<<<<<<< HEAD
     public PessoaDao() {
         arquivo = new File("pessoas.ser");
         if (!arquivo.exists()) {
@@ -18,22 +17,10 @@ public class PessoaDao {
                 arquivo.createNewFile();
             } catch (IOException e) {
                 System.out.println("Falha ao criar arquivo: " + e.getMessage());
-=======
-    public PessoaDao(){
-        arquivo = new File("pessoas.ser");
-        if(!arquivo.exists()){
-            try {
-                arquivo.createNewFile();
-
-            }
-            catch (IOException e){
-                System.out.println("Falha ao criar arquivo");
->>>>>>> origin/main
             }
         }
     }
 
-<<<<<<< HEAD
     @SuppressWarnings("unchecked")
     public Set<Pessoa> getPessoas() {
         if (arquivo.length() > 0) {
@@ -44,24 +31,11 @@ public class PessoaDao {
                 System.out.println("Arquivo não encontrado: " + e.getMessage());
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Falha ao ler arquivo: " + e.getMessage());
-=======
-    public Set<Pessoa> getPessoas() {
-        if (arquivo.length() > 0) {
-            try {
-                FileInputStream inputStream = new FileInputStream(arquivo);
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                return (Set<Pessoa>) objectInputStream.readObject();
-            } catch (FileNotFoundException e) {
-                System.out.println("Arquivo não encontrado");
-            } catch (IOException | ClassNotFoundException e) {
-                System.out.println("Falha ao ler arquivo");
->>>>>>> origin/main
             }
         }
         return new HashSet<>();
     }
 
-<<<<<<< HEAD
     public boolean salvar(Set<Pessoa> pessoas) {
         try (FileOutputStream outputStream = new FileOutputStream(arquivo);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
@@ -77,21 +51,6 @@ public class PessoaDao {
         Set<Pessoa> pessoas = getPessoas();
         if (pessoas.add(pessoa)) {
             return salvar(pessoas);
-=======
-    public boolean salvar(Pessoa pessoa) {
-        Set<Pessoa> pessoas = getPessoas();
-        if (pessoas.add(pessoa)) {
-            try {
-                FileOutputStream outputStream = new FileOutputStream(arquivo);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(pessoas);
-                return true;
-            } catch (FileNotFoundException e) {
-                System.out.println("Arquivo não encontrado");
-            } catch (IOException e) {
-                System.out.println("Falha ao escrever no arquivo");
-            }
->>>>>>> origin/main
         }
         return false;
     }
@@ -99,20 +58,7 @@ public class PessoaDao {
     public boolean deletar(Pessoa pessoa) {
         Set<Pessoa> pessoas = getPessoas();
         if (pessoas.remove(pessoa)) {
-<<<<<<< HEAD
             return salvar(pessoas);
-=======
-            try {
-                FileOutputStream outputStream = new FileOutputStream(arquivo);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(pessoas);
-                return true;
-            } catch (FileNotFoundException e) {
-                System.out.println("Arquivo não encontrado");
-            } catch (IOException e) {
-                System.out.println("Falha ao escrever no arquivo");
-            }
->>>>>>> origin/main
         }
         return false;
     }
@@ -136,19 +82,8 @@ public class PessoaDao {
         }
         if (pessoaParaDeletar != null) {
             pessoas.remove(pessoaParaDeletar);
-<<<<<<< HEAD
             return salvar(pessoas);
         }
         return false;
     }
-=======
-            salvar((Pessoa) pessoas);
-            return true;
-        }
-
-        return false;
-    }
-
-
->>>>>>> origin/main
 }
